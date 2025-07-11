@@ -1,66 +1,64 @@
 package java_hw_3.task_6;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Яка програма вас цікавить (IntelliJ IDEA, Git, Java): ");
+        System.out.print("Which software are you interested in (IntelliJ IDEA, Git, Java): ");
         String program = scanner.nextLine();
 
-        System.out.print("Вкажіть вашу операційну систему (Linux, MacOS, Windows): ");
+        System.out.print("Specify your operating system (Linux, MacOS, Windows): ");
         String os = scanner.nextLine();
 
         switch (program) {
             case "IntelliJ IDEA":
                 switch (os) {
                     case "Linux":
-                        System.out.println("https://www.jetbrains.com/idea/download/#section=linux");
+                        System.out.println("Download link: https://www.jetbrains.com/idea/download/#section=linux");
                         break;
                     case "MacOS":
-                        System.out.println("https://www.jetbrains.com/idea/download/#section=mac");
+                        System.out.println("Download link: https://www.jetbrains.com/idea/download/#section=mac");
                         break;
                     case "Windows":
-                        System.out.println("https://www.jetbrains.com/idea/download/#section=windows");
+                        System.out.println("Download link: https://www.jetbrains.com/idea/download/#section=windows");
                         break;
                     default:
-                        System.out.println("Такої ОС не існує.");
+                        System.out.println("Such an operating system does not exist.");
                 }
                 break;
 
             case "Git":
                 switch (os) {
                     case "Linux":
-                        System.out.println("https://git-scm.com/download/linux");
+                        System.out.println("Download link: https://git-scm.com/download/linux");
                         break;
                     case "MacOS":
-                        System.out.println("https://git-scm.com/download/mac");
+                        System.out.println("Download link: https://git-scm.com/download/mac");
                         break;
                     case "Windows":
-                        System.out.println("https://git-scm.com/download/win");
+                        System.out.println("Download link: https://git-scm.com/download/win");
                         break;
                     default:
-                        System.out.println("Такої ОС не існує.");
+                        System.out.println("Such an operating system does not exist.");
                 }
                 break;
 
             case "Java":
                 switch (os) {
                     case "Linux":
-                        System.out.println("https://www.oracle.com/java/technologies/javase-jdk11-downloads.html");
-                        break;
                     case "MacOS":
-                        System.out.println("https://www.oracle.com/java/technologies/javase-jdk11-downloads.html");
-                        break;
                     case "Windows":
-                        System.out.println("https://www.oracle.com/java/technologies/javase-jdk11-downloads.html");
+                        System.out.println("Download link: https://www.oracle.com/java/technologies/javase-jdk11-downloads.html");
                         break;
                     default:
-                        System.out.println("Такої ОС не існує.");
+                        System.out.println("Such an operating system does not exist.");
                 }
                 break;
 
             default:
-                System.out.println("Такої програми не існує.");
+                System.out.println("Such a software program does not exist.");
         }
     }
 }

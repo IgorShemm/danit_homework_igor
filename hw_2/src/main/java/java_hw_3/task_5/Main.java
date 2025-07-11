@@ -1,25 +1,27 @@
 package java_hw_3.task_5;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        Scanner inputScanner = new Scanner(System.in);
 
-        System.out.print("Введіть перше число: ");
-        int a = scanner.nextInt();
+        System.out.print("Enter the first number: ");
+        int firstNumber = inputScanner.nextInt();
 
-        System.out.print("Введіть друге число: ");
-        int b = scanner.nextInt();
+        System.out.print("Enter the second number: ");
+        int secondNumber = inputScanner.nextInt();
 
-        System.out.print("Введіть оператор (+, -, *, /, %): ");
-        char op = scanner.next().charAt(0); // беремо перший символ
+        System.out.print("Enter an operator (+, -, *, /, %): ");
+        char operator = inputScanner.next().charAt(0);
 
-        int result = (op == '+') ? (a + b) :
-                (op == '-') ? (a - b) :
-                        (op == '*') ? (a * b) :
-                                (op == '/') ? (b != 0 ? a / b : 0) :
-                                        (op == '%') ? (b != 0 ? a % b : 0) :
+        int calculationResult = (operator == '+') ? (firstNumber + secondNumber) :
+                (operator == '-') ? (firstNumber - secondNumber) :
+                        (operator == '*') ? (firstNumber * secondNumber) :
+                                (operator == '/') ? (secondNumber != 0 ? firstNumber / secondNumber : 0) :
+                                        (operator == '%') ? (secondNumber != 0 ? firstNumber % secondNumber : 0) :
                                                 0;
 
-        System.out.println("Результат: " + result);
+        System.out.println("Result: " + calculationResult);
     }
 }

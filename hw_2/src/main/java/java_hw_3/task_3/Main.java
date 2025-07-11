@@ -4,20 +4,14 @@ public class Main {
     public static void main(String[] args) {
         java.util.Scanner scanner = new java.util.Scanner(System.in);
 
-        System.out.print("Введіть перше число: ");
+        System.out.print("Enter the first number: ");
         int a = scanner.nextInt();
 
-        System.out.print("Введіть друге число: ");
+        System.out.print("Enter the second number: ");
         int b = scanner.nextInt();
 
-        int difference;
+        int difference = (a > b) ? a - b : b - a;
 
-        if (a > b) {
-            difference = a - b;
-        } else {
-            difference = b - a;
-        }
-
-        System.out.println("Різниця (більше - менше) = " + difference);
+        System.out.println("Difference (greater - smaller) = " + difference);
     }
 }
