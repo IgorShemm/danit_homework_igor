@@ -1,18 +1,18 @@
 package hw_2.task_2;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         String text = "Testing, is my favourite job";
 
-        // Прибираємо кому і розбиваємо на слова
+        // Remove comma and split into words
         String[] words = text.replace(",", "").split(" ");
 
-        // Виводимо слова та їх довжини
+        // Print each word and its length
         for (int i = 0; i < words.length; i++) {
-            System.out.println("Слово" + (i + 1) + " = " + words[i] + ", Довжина цього слова = " + words[i].length());
+            System.out.println("Word" + (i + 1) + " = " + words[i] + ", Length of this word = " + words[i].length());
         }
 
-        // Перевіряємо, чи перше слово довше за всі інші
+        // Check if the first word is longer than all the others
         int firstLength = words[0].length();
         boolean isLongest = true;
 
