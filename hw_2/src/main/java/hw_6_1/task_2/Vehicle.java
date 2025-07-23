@@ -1,8 +1,8 @@
 package hw_6_1.task_2;
 
 public class Vehicle {
-    String name;
-    int speed;
+    private String name;
+    private int speed;
 
     public Vehicle(String name, int speed) {
         this.name = name;
@@ -15,5 +15,13 @@ public class Vehicle {
 
     public void stop() {
         System.out.println("Vehicle " + name + " has stopped");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 }
