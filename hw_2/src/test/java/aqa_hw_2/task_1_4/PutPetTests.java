@@ -1,4 +1,4 @@
-package aqa_hw_2.task_1_4.tests;
+package aqa_hw_2.task_1_4;
 
 import aqa_hw_2.task_1_4.dto.CategoryDto;
 import aqa_hw_2.task_1_4.dto.PetDto;
