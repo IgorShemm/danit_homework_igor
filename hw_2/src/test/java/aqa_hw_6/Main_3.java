@@ -1,64 +1,50 @@
 package aqa_hw_6;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Set;
-import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Main_3 {
 
-    private WebDriver driver;
-
-    @BeforeEach
-    public void setUp() {
-        driver = new ChromeDriver();
+    @Test
+    public void changeLanguageAndVerifyCityName() {
+        WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://hotline.ua/");
-    }
 
-    @Test
-    public void checkAuthorizationWindow() {
-        WebElement loginButton = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(300))
-                .ignoring(NoSuchElementException.class)
-                .until(d -> d.findElement(By.cssSelector("a.login-button")));
-        loginButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        String originalWindow = driver.getWindowHandle();
-        Set<String> allWindows = driver.getWindowHandles();
+        WebElement citySelector = wait.until(ExpectedConditions.elementToBeClickable(
+                By.cssSelector("div.location__city")
+        ));
+        citySelector.click();
 
-        for (String window : allWindows) {
-            if (!window.equals(originalWindow)) {
-                driver.switchTo().window(window);
-                break;
-            }
-        }
+        WebElement odessaOption = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//span[contains(@class,'cities-list__link') and contains(text(),'Одеса')]")
+        ));
+        odessaOption.click();
 
-        FluentWait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(300))
-                .ignoring(NoSuchElementException.class);
+        WebElement languageButton = wait.until(ExpectedConditions.elementToBeClickable(
+                By.cssSelector("div.lang-button.header__lang-icon")
+        ));
+        languageButton.click();
 
-        WebElement emailField = wait.until(new Function<>() {
-            public WebElement apply(WebDriver d) {
-                return d.findElement(By.cssSelector("input.field.m_b-5[placeholder*='E-mail']"));
-            }
-        });
+        WebElement russianOption = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[@class='lang-item' and normalize-space(text())='RU']")
+        ));
+        russianOption.click();
 
-        assertTrue(emailField.isDisplayed());
-    }
+        WebElement cityName = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("div.location__city")
+        ));
+        assertTrue(cityName.getText().contains("Одесса"));
 
-    @AfterEach
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+        driver.quit();
     }
 }

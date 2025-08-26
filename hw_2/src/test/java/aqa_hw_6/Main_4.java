@@ -1,16 +1,19 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+package aqa_hw_6;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
-import java.util.NoSuchElementException;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Main_4 {
-    public static void main(String[] args) {
+
+    @Test
+    public void testCompareButtonPresence() {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://hotline.ua/");
@@ -18,26 +21,25 @@ public class Main_4 {
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(15))
                 .pollingEvery(Duration.ofMillis(500))
-                .ignoring(NoSuchElementException.class);
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
 
         wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
 
         WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("input[placeholder='Знайти товар, магазин, бренд']")));
-        searchInput.sendKeys("смартфон");
+                By.cssSelector("input[type='text']")));
+
+        String searchQuery = "смартфон";
+        searchInput.sendKeys(searchQuery);
         searchInput.sendKeys(Keys.ENTER);
 
         WebElement comparePricesLink = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//a[contains(text(),'Порівняти Ціни')]")));
+                By.cssSelector("a.btn.btn--orange")));
         comparePricesLink.click();
 
         WebElement compareButton = wait.until(ExpectedConditions.elementToBeClickable(
                 By.cssSelector("button.many__price-btn.btn--wide.btn--orange")));
-        if (compareButton.isDisplayed()) {
-            System.out.println("✅ Compare button is present and clickable.");
-        } else {
-            System.out.println("❌ Compare button not found.");
-        }
+        assertTrue(compareButton.isDisplayed());
 
         driver.quit();
     }

@@ -1,32 +1,53 @@
+package aqa_hw_6;
+
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Main_5 {
-    public static void main(String[] args) {
+
+    @Test
+    public void testAddToFavorites() {
         WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
         driver.manage().window().maximize();
+        driver.get("https://hotline.ua/");
 
-        try {
-            driver.get("https://hotline.ua/");
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofMillis(500))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
 
-            WebElement searchInput = driver.findElement(By.cssSelector("input[placeholder='Знайти товар, магазин, бренд']"));
-            searchInput.sendKeys("планшет");
-            searchInput.sendKeys(Keys.ENTER);
+        String searchQuery = "планшет";
 
-            WebElement firstProduct = driver.findElement(By.cssSelector("a.item-title.text-md.link.link--black"));
-            firstProduct.click();
+        WebElement productSearchField = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='text']"))
+        );
+        productSearchField.sendKeys(searchQuery);
+        productSearchField.sendKeys(Keys.ENTER);
 
-            WebElement favButton = driver.findElement(By.cssSelector("div.action-button--bookmark"));
-            favButton.click();
+        WebElement firstProduct = wait.until(
+                ExpectedConditions.elementToBeClickable(By.cssSelector("a.item-title.text-md.link.link--black"))
+        );
+        firstProduct.click();
 
-            WebElement modalText = driver.findElement(By.cssSelector("span.title__text"));
-            if (!modalText.getText().contains("Зберегти в")) {
-                throw new RuntimeException();
-            }
+        WebElement favButton = wait.until(
+                ExpectedConditions.elementToBeClickable(By.cssSelector("div.action-button--bookmark"))
+        );
+        favButton.click();
 
-        } finally {
-            driver.quit();
-        }
+        WebElement modalText = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.title__text"))
+        );
+        assertTrue(modalText.getText().contains("Зберегти в"));
+
+        driver.quit();
     }
 }
