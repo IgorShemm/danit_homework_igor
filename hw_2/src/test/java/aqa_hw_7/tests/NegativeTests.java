@@ -20,17 +20,8 @@ public class NegativeTests extends BaseTest {
                 By.cssSelector("input[type='text']")
         ));
         searchInput.sendKeys("asdasdasd123");
-        Thread.sleep(500);
+        wait.until(ExpectedConditions.attributeToBeNotEmpty(searchInput, "value"));
         searchInput.sendKeys(Keys.ENTER);
-        Thread.sleep(2000);
-
-        String originalWindow = getDriver().getWindowHandle();
-        for (String windowHandle : getDriver().getWindowHandles()) {
-            if (!windowHandle.equals(originalWindow)) {
-                getDriver().switchTo().window(windowHandle);
-                break;
-            }
-        }
 
         WebElement noResultsBlock = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("div.search__no-items-title")

@@ -3,6 +3,7 @@ package aqa_hw_7.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,41 +18,38 @@ public class ComparisonTests extends BaseTest {
     private final String searchQuery = "смартфон";
 
     @Test
-    public void addProductsAndOpenComparisonSafely() throws InterruptedException {
+    public void addProoductsAndOpenComparisonSafely() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(7));
 
         WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("input[type='text']")
         ));
         searchInput.sendKeys(searchQuery);
-        Thread.sleep(500);
+        Thread.sleep(5000);
         searchInput.sendKeys(Keys.ENTER);
-        Thread.sleep(3000);
 
         wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
                 By.cssSelector("button.list-item-compare__icon"), 1
         ));
         List<WebElement> buttons = getDriver().findElements(By.cssSelector("button.list-item-compare__icon"));
-        Thread.sleep(3000);
-        wait.until(ExpectedConditions.elementToBeClickable(buttons.get(0))).click();
-        Thread.sleep(3000);
-        wait.until(ExpectedConditions.elementToBeClickable(buttons.get(1))).click();
-        Thread.sleep(3000);
+
+        buttons.get(0).click();
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
+                By.cssSelector("button.list-item-compare__icon svg use[href*='#i-compare-solid']"), 0
+        ));
+        buttons.get(1).click();
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
+                By.cssSelector("button.list-item-compare__icon svg use[href*='#i-compare-solid']"), 1
+        ));
 
         WebElement solidIcon = wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.cssSelector("button.list-item-compare__icon svg use[href*='#i-compare-solid']")
         ));
         WebElement parentButton = solidIcon.findElement(By.xpath("./ancestor::button"));
-        parentButton.click();
-        Thread.sleep(3000);
+        wait.until(ExpectedConditions.elementToBeClickable(parentButton)).click();
 
-        String originalWindow = getDriver().getWindowHandle();
-        for (String windowHandle : getDriver().getWindowHandles()) {
-            if (!windowHandle.equals(originalWindow)) {
-                getDriver().switchTo().window(windowHandle);
-                break;
-            }
-        }
+        String secondTab = getDriver().getWindowHandles().stream().toList().get(1);
+        getDriver().switchTo().window(secondTab);
 
         WebElement countBlock = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("div.text-md")
@@ -68,9 +66,13 @@ public class ComparisonTests extends BaseTest {
                 By.cssSelector("input[type='text']")
         ));
         searchInput.sendKeys(searchQuery);
-        Thread.sleep(500);
+        Thread.sleep(5000);
         searchInput.sendKeys(Keys.ENTER);
-        Thread.sleep(3000);
+
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
+                By.cssSelector("button.list-item-compare__icon"), 1
+        ));
+        List<WebElement> buttons = getDriver().findElements(By.cssSelector("button.list-item-compare__icon"));
 
         wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
                 By.cssSelector("img.rounded-border--sm"), 1
@@ -79,27 +81,23 @@ public class ComparisonTests extends BaseTest {
         String firstSrc = images.get(0).getAttribute("src");
         String secondSrc = images.get(1).getAttribute("src");
 
-        List<WebElement> compareButtons = getDriver().findElements(By.cssSelector("button.list-item-compare__icon"));
-        Thread.sleep(3000);
-        wait.until(ExpectedConditions.elementToBeClickable(compareButtons.get(0))).click();
-        Thread.sleep(3000);
-        wait.until(ExpectedConditions.elementToBeClickable(compareButtons.get(1))).click();
-        Thread.sleep(3000);
+        buttons.get(0).click();
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
+                By.cssSelector("button.list-item-compare__icon svg use[href*='#i-compare-solid']"), 0
+        ));
+        buttons.get(1).click();
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
+                By.cssSelector("button.list-item-compare__icon svg use[href*='#i-compare-solid']"), 1
+        ));
 
         WebElement solidIcon = wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.cssSelector("button.list-item-compare__icon svg use[href*='#i-compare-solid']")
         ));
         WebElement parentButton = solidIcon.findElement(By.xpath("./ancestor::button"));
-        parentButton.click();
-        Thread.sleep(3000);
+        wait.until(ExpectedConditions.elementToBeClickable(parentButton)).click();
 
-        String originalWindow = getDriver().getWindowHandle();
-        for (String windowHandle : getDriver().getWindowHandles()) {
-            if (!windowHandle.equals(originalWindow)) {
-                getDriver().switchTo().window(windowHandle);
-                break;
-            }
-        }
+        String secondTab = getDriver().getWindowHandles().stream().toList().get(1);
+        getDriver().switchTo().window(secondTab);
 
         wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(
                 By.cssSelector("img.rounded-border--sm"), 1

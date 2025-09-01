@@ -41,13 +41,11 @@ public class CityLanguageTests extends BaseTest {
                 By.cssSelector("div.lang-button")
         ));
         new Actions(getDriver()).moveToElement(langButton).click().perform();
-        Thread.sleep(2000);
 
         WebElement ruOption = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//div[contains(@class,'lang-item') and normalize-space()='RU']")
         ));
         ruOption.click();
-        Thread.sleep(3000);
 
         WebElement searchTextRu = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("div.search-section__text")
@@ -59,13 +57,11 @@ public class CityLanguageTests extends BaseTest {
                 By.cssSelector("div.lang-button")
         ));
         new Actions(getDriver()).moveToElement(langButtonAgain).click().perform();
-        Thread.sleep(2000);
 
         WebElement uaOption = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//div[contains(@class,'lang-item') and normalize-space()='UA']")
         ));
         uaOption.click();
-        Thread.sleep(3000);
 
         WebElement searchTextUa = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("div.search-section__text")
