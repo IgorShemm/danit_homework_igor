@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="AQA_HW_8_Suite">
+    <test name="Full Test Run">
+        <classes>
+            <class name="aqa_hw_8.LoginTests"/>
+            <class name="aqa_hw_8.ProductTests"/>
+        </classes>
+    </test>
+</suite>
