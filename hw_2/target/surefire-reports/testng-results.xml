@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-09-07T04:17:25 EEST" name="Surefire suite" finished-at="2025-09-07T04:18:01 EEST" duration-ms="36179">
+    <groups>
+    </groups>
+    <test started-at="2025-09-07T04:17:25 EEST" name="Surefire test" finished-at="2025-09-07T04:18:01 EEST" duration-ms="36179">
+      <class name="aqa_hw_10.PromotionsTests">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:aqa_hw_10.PromotionsTests@550dbc7a]" started-at="2025-09-07T04:17:44 EEST" name="setUp" finished-at="2025-09-07T04:17:45 EEST" duration-ms="337" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="openPromotionsAndCheckPromotionsExist()[pri:0, instance:aqa_hw_10.PromotionsTests@550dbc7a]" started-at="2025-09-07T04:17:45 EEST" name="openPromotionsAndCheckPromotionsExist" finished-at="2025-09-07T04:17:50 EEST" duration-ms="5632" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openPromotionsAndCheckPromotionsExist -->
+      </class> <!-- aqa_hw_10.PromotionsTests -->
+      <class name="aqa_hw_10.CartTests">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:aqa_hw_10.CartTests@4dbb42b7]" started-at="2025-09-07T04:17:25 EEST" name="setUp" finished-at="2025-09-07T04:17:27 EEST" duration-ms="2805" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="searchAndAddProductToCart()[pri:0, instance:aqa_hw_10.CartTests@4dbb42b7]" started-at="2025-09-07T04:17:27 EEST" name="searchAndAddProductToCart" finished-at="2025-09-07T04:17:38 EEST" duration-ms="10280" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchAndAddProductToCart -->
+      </class> <!-- aqa_hw_10.CartTests -->
+      <class name="aqa_hw_10.LoginTests">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:aqa_hw_10.LoginTests@66f57048]" started-at="2025-09-07T04:17:38 EEST" name="setUp" finished-at="2025-09-07T04:17:39 EEST" duration-ms="767" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="invalidLoginShowsErrorMessage()[pri:0, instance:aqa_hw_10.LoginTests@66f57048]" started-at="2025-09-07T04:17:39 EEST" name="invalidLoginShowsErrorMessage" finished-at="2025-09-07T04:17:44 EEST" duration-ms="5815" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidLoginShowsErrorMessage -->
+      </class> <!-- aqa_hw_10.LoginTests -->
+      <class name="aqa_hw_10.SearchTests">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:aqa_hw_10.SearchTests@21282ed8]" started-at="2025-09-07T04:17:50 EEST" name="setUp" finished-at="2025-09-07T04:17:51 EEST" duration-ms="358" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="searchProductAndVerifyResult()[pri:0, instance:aqa_hw_10.SearchTests@21282ed8]" started-at="2025-09-07T04:17:51 EEST" name="searchProductAndVerifyResult" finished-at="2025-09-07T04:18:01 EEST" duration-ms="10104" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchProductAndVerifyResult -->
+      </class> <!-- aqa_hw_10.SearchTests -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
