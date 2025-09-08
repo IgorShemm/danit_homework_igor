@@ -16,7 +16,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        WebDriverManager.chromedriver().setup(); // автоматическая настройка драйвера
+        WebDriverManager.chromedriver().setup();
 
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
@@ -26,7 +26,7 @@ public class BaseTest {
 
     @AfterMethod
     public void publishTestResultsToTestRail(ITestResult testResult) {
-        if (testCaseId == 0) return; // если ID не указан — пропускаем
+        if (testCaseId == 0) return;
 
         int statusId = testResult.isSuccess() ? 1 : 5;
         publishResults(statusId, testCaseId);

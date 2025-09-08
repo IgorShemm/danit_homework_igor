@@ -16,7 +16,7 @@ public class TestRailController {
     public static void publishResults(int statusId, int testCaseId) {
         given()
                 .header("Authorization", "Basic " + CREDENTIALS)
-                .contentType("Application/json") // как на лекции — с заглавной буквы
+                .contentType("Application/json")
                 .body(new TestRailRequestDto(statusId))
                 .post(BASE_API_URL + String.format("add_result_for_case/%s/%s", RUN_ID, testCaseId));
     }
