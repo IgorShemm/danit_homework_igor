@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Hotline Full Test Suite">
+    <listeners>
+        <listener class-name="aqa_hw_7.listeners.Listeners"/>
+    </listeners>
+
+    <test name="AllTests">
+        <classes>
+            <class name="aqa_hw_7.tests.CityLanguageTests"/>
+            <class name="aqa_hw_7.tests.ComparisonTests"/>
+            <class name="aqa_hw_7.tests.NegativeTests"/>
+        </classes>
+    </test>
+</suite>
