@@ -7,13 +7,15 @@ public class ProductTests extends BaseTest {
 
     @Test
     public void verifyProductTitleMatchesSearchResult() {
+        int secondProductIndex = 1;
+
         HomePage homePage = new HomePage();
         homePage.enterSearchText("iPhone 15");
         homePage.clickOnSearchButton();
 
         SearchResultPage searchResultPage = new SearchResultPage();
-        String expectedProductName = searchResultPage.getProductName(1);
-        searchResultPage.clickOnProduct(1);
+        String expectedProductName = searchResultPage.getProductName(secondProductIndex);
+        searchResultPage.clickOnProduct(secondProductIndex);
 
         ProductDetailsPage productDetailsPage = new ProductDetailsPage();
         String actualProductTitle = productDetailsPage.getProductPageTitle();
@@ -23,12 +25,14 @@ public class ProductTests extends BaseTest {
 
     @Test
     public void verifyCompareButtonOpensShopsList() {
+        int secondProductIndex = 1;
+
         HomePage homePage = new HomePage();
         homePage.enterSearchText("PlayStation 5");
         homePage.clickOnSearchButton();
 
         SearchResultPage searchResultPage = new SearchResultPage();
-        searchResultPage.clickOnProduct(1);
+        searchResultPage.clickOnProduct(secondProductIndex);
 
         ProductDetailsPage productDetailsPage = new ProductDetailsPage();
         productDetailsPage.clickOnCompareButton();
@@ -38,17 +42,19 @@ public class ProductTests extends BaseTest {
 
     @Test
     public void verifyProductPriceMatchesSearchResult() {
+        int firstProductIndex = 0;
+
         HomePage homePage = new HomePage();
         homePage.enterSearchText("iPhone 15");
         homePage.clickOnSearchButton();
 
         SearchResultPage searchResultPage = new SearchResultPage();
-        String expectedPrice = searchResultPage.getProductPrice(0);
-        searchResultPage.clickOnProduct(0);
+        String expectedPrice = searchResultPage.getProductPrice(firstProductIndex);
+        searchResultPage.clickOnProduct(firstProductIndex);
 
         ProductDetailsPage productDetailsPage = new ProductDetailsPage();
         String actualPrice = productDetailsPage.getProductPrice();
 
-        Assert.assertEquals(actualPrice, expectedPrice, "Цены не совпадают между поиском и карточкой товара");
+        Assert.assertEquals(actualPrice, expectedPrice);
     }
 }
