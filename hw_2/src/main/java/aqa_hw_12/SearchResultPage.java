@@ -4,10 +4,10 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.WebElementsCondition;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.sleep;
 
 import java.time.Duration;
 
@@ -40,11 +40,16 @@ public class SearchResultPage {
     }
 
     public void applyBatteryFilter() {
+        String previousTitle = getFirstProductTitle();
+
         $("a[href='/ua/mobile/mobilnye-telefony-i-smartfony/385521/']")
                 .shouldBe(visible, Duration.ofSeconds(10))
                 .click();
 
-        sleep(4000);
+        $$("div.list-item__title-container a.item-title")
+                .filter(visible)
+                .first()
+                .shouldNotHave(text(previousTitle), Duration.ofSeconds(12));
     }
 
     public boolean firstProductHasNfc() {

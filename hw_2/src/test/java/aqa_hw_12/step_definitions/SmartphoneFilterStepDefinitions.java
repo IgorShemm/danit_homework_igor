@@ -1,6 +1,5 @@
 package aqa_hw_12.step_definitions;
 
-import aqa_hw_12.HomePage;
 import aqa_hw_12.SearchResultPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,21 +7,10 @@ import org.junit.Assert;
 
 public class SmartphoneFilterStepDefinitions {
 
-    private HomePage homePage = new HomePage();
     private SearchResultPage searchResultsPage = new SearchResultPage();
 
     private String firstTitleBeforeFilter;
     private String firstTitleAfterFilter;
-
-    @When("User enters search query {string}")
-    public void enterSearchQuery(String query) {
-        homePage.entersSearchWord(query);
-    }
-
-    @When("User clicks search button")
-    public void clickSearchButton() {
-        homePage.clickOnSearchButton();
-    }
 
     @When("User saves first product title")
     public void saveFirstProductTitle() {

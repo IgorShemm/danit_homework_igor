@@ -39,4 +39,14 @@ public class HomePageStepDefinitions {
     public void clickOnLoginButton() {
         homePage.clickOnLoginButton();
     }
+
+    @When("User enters search query {string}")
+    public void enterSearchQuery(String query) {
+        homePage.entersSearchWord(query);
+    }
+
+    @When("User clicks search button")
+    public void clickSearchButton() {
+        homePage.clickOnSearchButton();
+    }
 }
