@@ -23,7 +23,7 @@ public class ProductLanguageTest extends BaseTest {
 
         $("input[type='search']").shouldBe(visible).setValue(query);
         sleep(3000);
-        actions().sendKeys(Keys.ENTER).perform();
+        $("input[type='search']").pressEnter();
 
         $$("a.ui-card-title").findBy(text("The Harry Potter. Wizarding Almanac"))
                 .shouldBe(visible).click();

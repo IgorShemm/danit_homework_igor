@@ -1,7 +1,6 @@
 package aqa_hw_11;
 
 import com.codeborne.selenide.Configuration;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,8 +15,6 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
         open("https://www.yakaboo.ua/");
