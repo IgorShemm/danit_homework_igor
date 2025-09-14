@@ -13,7 +13,7 @@ public class LoginPage {
     private final SelenideElement loginModal = $(".modal-content");
     private final SelenideElement emailInput = $("input[name='auth_login']");
     private final SelenideElement passwordInput = $("input[name='auth_password']");
-    private final SelenideElement loginButton = $(".ui-btn-primary");
+    private final SelenideElement loginButton = $(".ui-btn-account");
 
     @Step("Check that login modal is visible")
     public LoginPage checkLoginModalVisible() {

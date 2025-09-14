@@ -3,10 +3,11 @@ package aqa_hw_10;
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.actions;
-import static org.openqa.selenium.Keys.ESCAPE;
-import static org.openqa.selenium.Keys.ENTER;
 import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Condition.visible;
+import static org.openqa.selenium.Keys.ESCAPE;
 
 @Epic("Search")
 @Feature("Search Functionality")
@@ -22,10 +23,9 @@ public class SearchTests extends BaseTest {
         sleep(5000);
         actions().sendKeys(ESCAPE).perform();
 
-        new HomePage()
-                .enterSearchQuery(query);
+        $("input[type='search']").shouldBe(visible).setValue(query);
         sleep(3000);
-        actions().sendKeys(ENTER).perform();
+        $("input[type='search']").pressEnter();
 
         SearchResultsPage resultsPage = new SearchResultsPage()
                 .checkResultsVisible()

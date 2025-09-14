@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.actions;
 import static com.codeborne.selenide.Selenide.sleep;
 import static org.openqa.selenium.Keys.ESCAPE;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 @Epic("Promotions")
 @Feature("Promotions Page")
@@ -27,10 +27,6 @@ public class PromotionsTests extends BaseTest {
                 .checkPromotionsVisible();
 
         int actualCount = promotionsPage.getPromotionCount();
-        assertEquals(
-                actualCount >= 5,
-                true,
-                "Expected at least 5 promotions, but got " + actualCount
-        );
+        assertTrue(actualCount >= 5, "Expected at least 5 promotions, but got " + actualCount);
     }
 }
