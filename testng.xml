@@ -1,0 +1,37 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="FinalProjectSuite" parallel="tests" thread-count="4">
+    <test name="UI Functional Tests">
+        <classes>
+            <class name="aqa_fp.LanguageSwitchTests"/>
+            <class name="aqa_fp.ProductSearchTests"/>
+            <class name="aqa_fp.ThemeSwitchTests"/>
+            <class name="aqa_fp.VerifyAddToCartTests"/>
+            <class name="aqa_fp.LoginNegativeTests"/>
+            <class name="aqa_fp.TrackOrderNegativeTests"/>
+            <class name="aqa_fp.ProductCheckoutConsistencyTests"/>
+            <class name="aqa_fp.ProductFilterValidationTests"/>
+            <class name="aqa_fp.ProductSortByPriceTests"/>
+            <class name="aqa_fp.FilterNegativePriceTests"/>
+            <class name="aqa_fp.ProductWholesaleCartTests"/>
+            <class name="aqa_fp.ProductUsedLabelTests"/>
+        </classes>
+    </test>
+
+    <test name="VerifyRemoveFromCart">
+        <classes>
+            <class name="aqa_fp.VerifyRemoveFromCartTests"/>
+        </classes>
+    </test>
+
+    <test name="CartUndo">
+        <classes>
+            <class name="aqa_fp.CartUndoTests"/>
+        </classes>
+    </test>
+
+    <test name="HomepageCart">
+        <classes>
+            <class name="aqa_fp.HomepageCartTests"/>
+        </classes>
+    </test>
+</suite>
